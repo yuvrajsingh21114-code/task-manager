@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Task Manager</title>
+        <script src="java.js"></script>
+        <link rel="stylesheet" href="css.css">
+    </head>
+
+    <body>
+        <h1>Task Manager</h1>
+
+        <form id="form1">
+            Enter Task Name:
+            <input type="text" id="itemname">
+            &nbsp;&nbsp;&nbsp;
+            Enter Due Date:
+            <input type="date" id="duedate">
+             &nbsp;&nbsp;&nbsp;<br><br>
+            <input type="button" onclick="additem()" value="Submit" class="mainbtn">
+            <input type="button" onclick="cln()" value="Clear Storage" class="mainbtn">
+        </form>
+
+        <hr>
+        <list id="list1" >
+
+        </list>
+    </body>
+      
+</html>

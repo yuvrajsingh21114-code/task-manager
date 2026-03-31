@@ -1,0 +1,39 @@
+body{
+    background: linear-gradient( white,#5bdbff);
+    color:#001d24;
+    text-align: center;
+    font-family:Franklin Gothic medium;
+    font-size: 20px;
+}
+button{
+    margin-left: 15px;
+}
+input,button{
+    background-color:rgba(91, 219, 255, 0);
+    border-radius: 9px;
+    color: black;
+    transition: all 0.5s;
+    height: 25px;
+}
+input:hover,button:hover{
+    background-color:rgba(91, 219, 255, 0.54);
+    border-radius: 5px;
+    color: black;
+
+}
+input.mainbtn{
+    height: 30px;
+    width: 120px;   
+    font-size: 15px;
+    font-weight: bold;
+}
+
+input.mainbtn:hover{
+    width: 130px;
+}
+
+
+hr{
+    height: 1px;
+    background-color: #001d24;
+}
