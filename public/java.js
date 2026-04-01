@@ -86,44 +86,44 @@ async function loadTasks(){
 
         let del=document.createElement("button");
         del.type="button";
-        del.onclick=function(){
-            item.remove();
-            console.log("Deleted item: "+itemname);
+        del.onclick=async()=>{
+            try{
+                const res= await fetch(`/tasks/${itemname}`,{
+                    method:"DELETE"
+                });
 
-            let tasks=localStorage.getItem("tasks");
-
-            if (tasks == null) {
-                tasks = [];
-            } else {
-                tasks = JSON.parse(tasks);
+                const data= await res.json();
+                console.log(data);
+                window.location.reload();
             }
-    
-            tasks=tasks.filter(task => task.name !== itemname);
-            localStorage.setItem("tasks", JSON.stringify(tasks));
+            catch(err){
+                console.error("Error:",err);
+            }
         }
         del.textContent="Delete";
 
         let comp=document.createElement("button");
         comp.type="button"; 
-        comp.onclick=function(){
-            item.style.color="green";
-            
-            let tasks=localStorage.getItem("tasks");
+        comp.onclick=async ()=>{
+            try{
+                const res=await fetch(`/tasks/${itemname}`,{
+                    method:"PUT",
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+                    body:JSON.stringify({
+                        complete:"true"
+                    })
+                });
 
-            if (tasks == null) {
-               tasks = [];
-            } else {
-            tasks = JSON.parse(tasks);
-           }
+                const data= await res.json();
+                console.log(data);
 
-            tasks.forEach(task =>{
-            if(task.name===itemname){
-                task.complete="t";
+                window.location.reload();
             }
-           });
-            localStorage.setItem("tasks", JSON.stringify(tasks));
-
-            console.log("Completed item: "+itemname);
+            catch(err){
+                console.error("Error:",err);
+            }
         }
         comp.textContent="Complete";
 
