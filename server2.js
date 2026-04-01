@@ -1,7 +1,10 @@
 const express=require('express');
 const pool=require('./db/db');
 const app=express();
+const taskroutes=require('./routes/taskroutes')
 app.use(express.json());
+
+app.use('/',taskroutes);
 
 app.use(express.static('public'));
 
