@@ -34,7 +34,7 @@ try{
     const data = await res.json();
     console.log(data.message);
 
-    loadTasks();
+    window.location.reload();
 }
 catch(err){
     console.error("Error:",err);
@@ -45,11 +45,24 @@ catch(err){
 
 //complete function block
 
-function cln(){
+async function cln(){
 let check=confirm("Are you sure you want to clear all tasks?");
 if(check==true){
-localStorage.clear();
-window.location.reload();
+
+    try{
+        const res=await fetch('/tasks',{
+            method:"DELETE"
+        });
+
+        const data=await res.json();
+        console.log(data.message);
+
+        window.location.reload();
+
+    }
+    catch(err){
+        console.error("Error:",err);
+    }
 }
 }
 
