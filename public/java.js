@@ -19,6 +19,7 @@ if(!duedate){
 }
 
 try{
+    console.log(duedate);
     const res= await fetch("http://localhost:4500/tasks/add-task",{
         method:"POST",
         headers:{
@@ -79,7 +80,8 @@ async function loadTasks(){
 
         for(let i=0; i<tasks.length; i++){
         let itemname=tasks[i].name;
-        let duedate=tasks[i].date;
+        let duedate=tasks[i].due;
+        duedate= duedate.split("T")[0];
 
         let item=document.createElement("li");
         item.innerHTML=" Name: "+itemname+"  Due on: "+duedate+"<br>";

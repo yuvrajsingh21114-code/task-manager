@@ -10,9 +10,9 @@ app.use(express.static('public'));
 
 app.get('/tasks',async (req,res)=>{
     try{
-        const result= await pool.query('select * from tasks');
+        const result= await pool.query('select name,due::text as due,complete from tasks');
         res.json(result.rows);
-
+    
     }
     catch(err){
         console.error(err);
